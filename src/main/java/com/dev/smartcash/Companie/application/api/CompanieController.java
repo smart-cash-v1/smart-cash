@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @Log4j2
 @RequiredArgsConstructor
@@ -31,5 +32,13 @@ public class CompanieController implements CompanieApi {
         List<CompanieListResponse> todasComnpanie = companieService.buscaTodasCompanie();
         log.info("[finaliza] CompanieController - getTodasCompanie - ");
         return todasComnpanie;
+    }
+
+    @Override
+    public CompanieDetalhadoResponse buscaCompaniePorId(UUID idCompanie) {
+        log.info("[inicia] CompanieController - buscaCompaniePorId - ");
+        CompanieDetalhadoResponse companieDetalhada = companieService.buscaCompaniePorID(idCompanie);
+        log.info("[finaliza] CompanieController - buscaCompaniePorId - ");
+        return companieDetalhada;
     }
 }
