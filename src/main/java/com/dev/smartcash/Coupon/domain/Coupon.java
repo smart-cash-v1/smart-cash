@@ -1,5 +1,6 @@
 package com.dev.smartcash.Coupon.domain;
 
+import com.dev.smartcash.Coupon.domain.application.CouponRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,11 @@ public class Coupon {
     private UUID idCompanie;
     @NotBlank
     private String name;
-
     private StatusFavorite statusFavorite;
 
+    public Coupon(CouponRequest couponRequest) {
+        this.idCompanie = couponRequest.getIdCompanie();
+        this.name = couponRequest.getName();
+        this.statusFavorite = statusFavorite.NOT_SAVED;
+    }
 }
