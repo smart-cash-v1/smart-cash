@@ -2,11 +2,14 @@ package com.dev.smartcash.Companie.infra;
 
 import com.dev.smartcash.Companie.application.repository.CompanieRepository;
 import com.dev.smartcash.Companie.domain.Companie;
+import com.dev.smartcash.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -33,9 +36,18 @@ public class CompanieApplicationRepository implements CompanieRepository {
 
     @Override
     public boolean existsByName(String name) {
-        log.info("[inicia] CompanieApplicationRepository - existsByName -  - ");
+        log.info("[inicia] CompanieApplicationRepository - existsByName");
         boolean nameExists = companieSpringDataJPARepository.existsByName(name);
         log.info("[finaliza] CompanieApplicationRepository - existsByName -  - ");
         return nameExists;
+    }
+
+    @Override
+    public Companie buscaCompaniePorId(UUID idCompanie) {
+        log.info("[inicia] CompanieApplicationRepository - buscaCompaniePorId ");
+        Companie companie = companieSpringDataJPARepository.findById(idCompanie)
+                        .orElseThrow(()-> APIException.build(HttpStatus.NOT_FOUND, "Companie não encntrada"));
+        log.info("[finaliza] CompanieApplicationRepository - buscaCompaniePorId ");
+        return companie;
     }
 }

@@ -1,9 +1,6 @@
 package com.dev.smartcash.Companie.application.service;
 
-import com.dev.smartcash.Companie.application.api.CompanieApi;
-import com.dev.smartcash.Companie.application.api.CompanieListResponse;
-import com.dev.smartcash.Companie.application.api.CompanieRequest;
-import com.dev.smartcash.Companie.application.api.CompanieResponse;
+import com.dev.smartcash.Companie.application.api.*;
 import com.dev.smartcash.Companie.application.repository.CompanieRepository;
 import com.dev.smartcash.Companie.domain.Companie;
 import com.dev.smartcash.handler.APIException;
@@ -13,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -40,5 +38,12 @@ public class CompanieApplicationService implements CompanieService {
         log.info("[finaliza] CompanieApplicationService - buscaTodasCompanie - ");
         return CompanieListResponse.converte(companies);
     }
-}
 
+    @Override
+    public CompanieDetalhadoResponse buscaCompaniePorID(UUID idCompanie) {
+        log.info("[inicia] CompanieApplicationService - buscaCompaniePorID -  - ");
+        Companie companie = companieRepository.buscaCompaniePorId(idCompanie);
+        log.info("[finaliza] CompanieApplicationService - buscaCompaniePorID -  - ");
+        return new CompanieDetalhadoResponse(companie);
+    }
+}
