@@ -9,9 +9,9 @@ import java.util.UUID;
 @Getter
 @ToString
 public class CompanieResponse {
-    private UUID id;
+    private UUID idCompanie;
 
     public CompanieResponse(Companie companie) {
-        this.id = companie.getId();
+        this.idCompanie = companie.getIdCompanie();
     }
 }

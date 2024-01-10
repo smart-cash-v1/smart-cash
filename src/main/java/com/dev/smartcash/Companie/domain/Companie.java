@@ -16,9 +16,10 @@ public class Companie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "idCompanie", updatable = false, unique = true, nullable = false)
-    private UUID id;
+    private UUID idCompanie;
     private String urlLogo;
     @NotBlank
+    @Column(unique = true)
     private String name;
     private LocalDateTime dataCadastro;
 
