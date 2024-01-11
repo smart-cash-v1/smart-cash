@@ -31,5 +31,10 @@ public interface CompanieApi {
             description = "Este endpoint recupera os detalhes de uma empresa específica com base no ID fornecido.")
     CompanieDetalhadoResponse buscaCompaniePorId(@PathVariable UUID idCompanie);
 
-}
 
+    @DeleteMapping(value = "/{idCompanie}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    @Operation(summary = "Deleta uma Companie com ID",
+            description = "Este endpoint deleta uma Companie com base no ID fornecido.")
+    void deletaCompanieComId(@PathVariable UUID idCompanie);
+}

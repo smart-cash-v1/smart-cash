@@ -14,4 +14,6 @@ public interface CompanieRepository {
     boolean existsByName(String name);
 
     Companie buscaCompaniePorId(UUID idCompanie);
+
+    void deletaCompanieComId(Companie companie);
 }
