@@ -50,4 +50,11 @@ public class CompanieApplicationRepository implements CompanieRepository {
         log.info("[finaliza] CompanieApplicationRepository - buscaCompaniePorId ");
         return companie;
     }
+
+    @Override
+    public void deletaCompanieComId(Companie companie) {
+        log.info("[inicia] CompanieApplicationRepository - deletaCompanieComId - ");
+        companieSpringDataJPARepository.delete(companie);
+        log.info("[finaliza] CompanieApplicationRepository - deletaCompanieComId - ");
+    }
 }

@@ -33,17 +33,25 @@ public class CompanieApplicationService implements CompanieService {
 
     @Override
     public List<CompanieListResponse> buscaTodasCompanie() {
-        log.info("[inicia] CompanieApplicationService - buscaTodasCompanie - ");
+        log.info("[inicia] CompanieApplicationService - buscaTodasCompanie ");
         List<Companie> companies = companieRepository.buscaTodasCpmanie();
-        log.info("[finaliza] CompanieApplicationService - buscaTodasCompanie - ");
+        log.info("[finaliza] CompanieApplicationService - buscaTodasCompanie ");
         return CompanieListResponse.converte(companies);
     }
 
     @Override
     public CompanieDetalhadoResponse buscaCompaniePorID(UUID idCompanie) {
-        log.info("[inicia] CompanieApplicationService - buscaCompaniePorID -  - ");
+        log.info("[inicia] CompanieApplicationService - buscaCompaniePorID ");
         Companie companie = companieRepository.buscaCompaniePorId(idCompanie);
-        log.info("[finaliza] CompanieApplicationService - buscaCompaniePorID -  - ");
+        log.info("[finaliza] CompanieApplicationService - buscaCompaniePorID");
         return new CompanieDetalhadoResponse(companie);
+    }
+
+    @Override
+    public void deletaCompanieComId(UUID idCompanie) {
+        log.info("[inicia] CompanieApplicationService - deletaCompanieComId ");
+        Companie companie = companieRepository.buscaCompaniePorId(idCompanie);
+        companieRepository.deletaCompanieComId(companie);
+        log.info("[finaliza] CompanieApplicationService - deletaCompanieComId");
     }
 }

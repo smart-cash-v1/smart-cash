@@ -14,4 +14,6 @@ public interface CompanieService {
     List<CompanieListResponse> buscaTodasCompanie();
 
     CompanieDetalhadoResponse buscaCompaniePorID(UUID idCompanie);
+
+    void deletaCompanieComId(UUID idCompanie);
 }

@@ -41,4 +41,11 @@ public class CompanieController implements CompanieApi {
         log.info("[finaliza] CompanieController - buscaCompaniePorId - ");
         return companieDetalhada;
     }
+
+    @Override
+    public void deletaCompanieComId(UUID idCompanie) {
+        log.info("[inicia] CompanieController - deletaCompanieComId -  - ");
+        companieService.deletaCompanieComId(idCompanie);
+        log.info("[finaliza] CompanieController - deletaCompanieComId -  - ");
+    }
 }
