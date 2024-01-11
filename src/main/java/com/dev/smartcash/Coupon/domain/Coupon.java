@@ -1,6 +1,6 @@
 package com.dev.smartcash.Coupon.domain;
 
-import com.dev.smartcash.Coupon.domain.application.CouponRequest;
+import com.dev.smartcash.Coupon.application.api.CouponRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +28,5 @@ public class Coupon {
     public Coupon(CouponRequest couponRequest) {
         this.idCompanie = couponRequest.getIdCompanie();
         this.name = couponRequest.getName();
-        this.statusFavorite = statusFavorite.NOT_SAVED;
     }
 }

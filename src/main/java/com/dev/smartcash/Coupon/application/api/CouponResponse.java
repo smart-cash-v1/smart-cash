@@ -1,4 +1,4 @@
-package com.dev.smartcash.Coupon.domain.application;
+package com.dev.smartcash.Coupon.application.api;
 
 import com.dev.smartcash.Coupon.domain.Coupon;
 import lombok.Getter;

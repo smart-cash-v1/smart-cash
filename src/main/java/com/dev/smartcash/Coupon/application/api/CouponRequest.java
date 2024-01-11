@@ -1,4 +1,4 @@
-package com.dev.smartcash.Coupon.domain.application;
+package com.dev.smartcash.Coupon.application.api;
 
 import com.dev.smartcash.Coupon.domain.StatusFavorite;
 import lombok.Getter;
@@ -15,5 +15,4 @@ public class CouponRequest {
     private UUID idCompanie;
     @NotBlank
     private String name;
-    private StatusFavorite statusFavorite;
 }
