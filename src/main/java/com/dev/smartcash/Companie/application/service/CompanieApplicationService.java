@@ -3,9 +3,11 @@ package com.dev.smartcash.Companie.application.service;
 import com.dev.smartcash.Companie.application.api.*;
 import com.dev.smartcash.Companie.application.repository.CompanieRepository;
 import com.dev.smartcash.Companie.domain.Companie;
+import com.dev.smartcash.handler.CompanieNotFoundException;
 import com.dev.smartcash.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,11 @@ public class CompanieApplicationService implements CompanieService {
     @Override
     public CompanieResponse cadastraCompanie(CompanieRequest companieRequest) {
         log.info("[inicia] CompanieApplicationService - cadastraCompanie");
+        if (StringUtils.isBlank(companieRequest.getName())) {
+            String errorMessage = "O campo 'name' não pode ser vazio.";
+            log.error(errorMessage);
+            throw APIException.build(HttpStatus.BAD_REQUEST, errorMessage);
+        }
         if (companieRepository.existsByName(companieRequest.getName())){
             String errorMessage = "Já existe uma empresa cadastrada com o mesmo nome.";
             log.error(errorMessage);
@@ -50,8 +57,10 @@ public class CompanieApplicationService implements CompanieService {
     @Override
     public void deletaCompanieComId(UUID idCompanie) {
         log.info("[inicia] CompanieApplicationService - deletaCompanieComId ");
-        Companie companie = companieRepository.buscaCompaniePorId(idCompanie);
-        companieRepository.deletaCompanieComId(companie);
+        if (!companieRepository.existsById(idCompanie)) {
+            throw new CompanieNotFoundException("Empresa não encontrada com o ID fornecido.");
+        }
+        companieRepository.deletaCompanieComId(idCompanie);
         log.info("[finaliza] CompanieApplicationService - deletaCompanieComId");
     }
 }

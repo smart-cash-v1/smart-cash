@@ -52,9 +52,17 @@ public class CompanieApplicationRepository implements CompanieRepository {
     }
 
     @Override
-    public void deletaCompanieComId(Companie companie) {
+    public void deletaCompanieComId(UUID iDcompanie) {
         log.info("[inicia] CompanieApplicationRepository - deletaCompanieComId - ");
-        companieSpringDataJPARepository.delete(companie);
+        companieSpringDataJPARepository.deleteById(iDcompanie);
         log.info("[finaliza] CompanieApplicationRepository - deletaCompanieComId - ");
+    }
+
+    @Override
+    public boolean existsById(UUID idCompanie) {
+        log.info("[inicia] CompanieApplicationRepository - existsById  - ");
+        boolean exists = companieSpringDataJPARepository.existsById(idCompanie);
+        log.info("[finaliza] CompanieApplicationRepository - existsById  - ");
+        return exists;
     }
 }
