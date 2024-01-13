@@ -14,6 +14,6 @@ public class CouponResponseDTO {
     public CouponResponseDTO(Coupon coupon) {
         this.idCompanie = coupon.getIdCompanie();
         this.name = coupon.getName();
-        this.statusFavorite = coupon.getStatusFavorite();
+        this.statusFavorite = coupon.getStatus();
     }
 }

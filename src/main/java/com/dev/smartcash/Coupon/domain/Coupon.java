@@ -23,10 +23,11 @@ public class Coupon {
     private UUID idCompanie;
     @NotBlank
     private String name;
-    private StatusFavorite statusFavorite;
+    private StatusFavorite status;
 
     public Coupon(CouponRequest couponRequest) {
         this.idCompanie = couponRequest.getIdCompanie();
         this.name = couponRequest.getName();
+        this.status = StatusFavorite.NOT_SAVED;
     }
 }
