@@ -2,6 +2,7 @@ package com.dev.smartcash.Coupon.application.api;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,13 +18,13 @@ public interface CouponAPI {
     @PostMapping
     @Operation(summary = "Criação do Cupom",
             description = "Este endpoint cria um cupom!")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(code = HttpStatus.CREATED)
     CouponResponse createdCoupon(@RequestBody @Valid CouponRequest couponRequest);
 
-    @GetMapping("/{idCompanie}")
+    @GetMapping(value = "/{idCoupon}")
     @Operation(summary = "Retorna o cupom, nome e id da empresa cadastrada!",
             description = "Este endpoint retorna um cupom específico de, uma empresa específica!")
-    @ResponseStatus(HttpStatus.OK)
-    CouponResponseDTO detailCoupon(@PathVariable UUID idCompanie);
+    @ResponseStatus(code = HttpStatus.OK)
+    CouponListDTO getCouponById(@PathVariable UUID idCoupon);
 
 }

@@ -9,9 +9,9 @@ import java.util.UUID;
 @Getter
 @ToString
 public class CouponResponse {
-    private UUID id;
+    private UUID idCoupon;
 
     public CouponResponse(Coupon coupon) {
-        this.id = coupon.getId();
+        this.idCoupon = coupon.getIdCoupon();
     }
 }
