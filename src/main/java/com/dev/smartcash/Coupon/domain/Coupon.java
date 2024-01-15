@@ -23,6 +23,7 @@ public class Coupon {
     private UUID idCompanie;
     @NotBlank
     private String name;
+    @Enumerated(EnumType.STRING)
     private StatusFavorite status;
 
     public Coupon(CouponRequest couponRequest) {
