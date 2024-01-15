@@ -39,4 +39,12 @@ public class RestResponseEntityExceptionHandler {
 		});
 		return errors;
 	}
+	@ExceptionHandler(CompanieNotFoundException.class)
+	public ResponseEntity<ErrorApiResponse> handleCompanieNotFoundException(CompanieNotFoundException ex) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND)
+				.body(ErrorApiResponse.builder()
+						.description(ex.getMessage())
+						.message("Empresa não encontrada.")
+						.build());
+	}
 }

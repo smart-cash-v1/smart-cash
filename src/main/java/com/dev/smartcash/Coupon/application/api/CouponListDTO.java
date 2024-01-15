@@ -12,5 +12,9 @@ public class CouponListDTO {
     public CouponListDTO(Coupon coupon) {
         this.idCompanie = coupon.getIdCompanie();
         this.name = coupon.getName();
+<<<<<<< HEAD:src/main/java/com/dev/smartcash/Coupon/application/api/CouponListDTO.java
+=======
+        this.statusFavorite = coupon.getStatus();
+>>>>>>> develop:src/main/java/com/dev/smartcash/Coupon/application/api/CouponResponseDTO.java
     }
 }

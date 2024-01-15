@@ -9,6 +9,5 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class CompanieRequest {
     private String urlLogo;
-    @NotBlank
     private String name;
 }
