@@ -26,6 +26,4 @@ public interface CouponAPI {
     @ResponseStatus(HttpStatus.OK)
     CouponResponseDTO detailCoupon(@PathVariable UUID idCompanie);
 
-    
-
 }
