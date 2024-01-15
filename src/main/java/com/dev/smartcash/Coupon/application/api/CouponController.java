@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @Log4j2
@@ -28,5 +29,13 @@ public class CouponController  implements CouponAPI{
         CouponListDTO coupon = couponService.getCouponById(idCoupon);
         log.info("[finish] CouponController - getCouponById");
         return coupon;
+    }
+
+    @Override
+    public List<CouponListDTO> getAllCoupons() {
+        log.info("[inicia] CouponController - getAllCoupons");
+        List<CouponListDTO> coupons = couponService.getAllCoupons();
+        log.info("[finaliza] CouponController - getAllCoupons");
+        return coupons;
     }
 }

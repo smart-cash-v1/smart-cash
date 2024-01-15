@@ -9,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.UUID;
 
 @Repository
@@ -32,5 +33,13 @@ public class CouponInfraRepository implements CouponRepository {
                         .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Coupon not found!"));
         log.info("[finaliza] CouponInfraRepository - getCouponId");
         return coupon;
+    }
+
+    @Override
+    public List<Coupon> getAllCoupons() {
+        log.info("[inicia] CouponInfraRepository - getAllCoupons");
+        List<Coupon> generalCoupon = couponSpringDataJPARepository.findAll();
+        log.info("[finaliza] CouponInfraRepository - getAllCoupons");
+        return generalCoupon;
     }
 }
