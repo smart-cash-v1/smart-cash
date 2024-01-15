@@ -1,7 +1,6 @@
 package com.dev.smartcash.Coupon.application.api;
 
 import com.dev.smartcash.Coupon.application.service.CouponService;
-import com.dev.smartcash.Coupon.domain.Coupon;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,10 +23,10 @@ public class CouponController  implements CouponAPI{
     }
 
     @Override
-    public CouponResponseDTO detailCoupon(UUID idCompanie) {
-        log.info("[inicia] CouponController - detailCoupon");
-        Coupon coupon = couponService.detailCoupon(idCompanie);
-        log.info("[finish] CouponController - detailCoupon");
-        return new CouponResponseDTO(coupon);
+    public CouponListDTO getCouponById(UUID idCoupon) {
+        log.info("[inicia] CouponController - getCouponById");
+        CouponListDTO coupon = couponService.getCouponById(idCoupon);
+        log.info("[finish] CouponController - getCouponById");
+        return coupon;
     }
 }
