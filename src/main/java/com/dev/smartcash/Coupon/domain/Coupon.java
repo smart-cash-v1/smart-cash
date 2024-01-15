@@ -17,7 +17,7 @@ public class Coupon {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "idCoupon", updatable = false, unique = true, nullable = false)
-    private UUID id;
+    private UUID idCoupon;
 
     @Column(columnDefinition = "uuid", name = "companie",  nullable = false)
     private UUID idCompanie;
