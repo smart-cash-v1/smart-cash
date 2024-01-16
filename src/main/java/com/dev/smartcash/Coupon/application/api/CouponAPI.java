@@ -3,11 +3,11 @@ package com.dev.smartcash.Coupon.application.api;
 import com.dev.smartcash.Coupon.domain.StatusFavorite;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -27,6 +27,7 @@ public interface CouponAPI {
             description = "Este endpoint retorna um cupom específico de, uma empresa específica!")
     @ResponseStatus(code = HttpStatus.OK)
     CouponListDTO getCouponById(@PathVariable UUID idCoupon);
+
 
     @PatchMapping("/{idCoupon}/status")
     @Operation(summary = "Mudar status do Cupom",
