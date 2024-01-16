@@ -8,6 +8,5 @@ import java.util.UUID;
 
 public interface CouponSpringDataJPARepository extends JpaRepository<Coupon, UUID> {
     Optional<Object> findByIdCoupon(UUID idCoupon);
-
     Optional<Coupon> findByIdCompanie(UUID idCompanie);
 }
