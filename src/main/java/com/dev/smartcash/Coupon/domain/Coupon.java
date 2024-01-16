@@ -32,8 +32,8 @@ public class Coupon {
         this.status = StatusFavorite.NOT_SAVED;
     }
 
-    public void setStatus(StatusFavorite saved) {
-        this.status = StatusFavorite.SAVED;
+    public void setStatus(StatusFavorite newStatus) {
+        this.status = newStatus;
 
     }
 }

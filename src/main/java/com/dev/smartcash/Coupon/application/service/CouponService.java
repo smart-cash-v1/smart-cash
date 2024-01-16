@@ -15,4 +15,6 @@ public interface CouponService {
     CouponDetailResponse getCompanieId(UUID idCompanie);
     void deleteCouponById(UUID idCoupon);
     void mudaStatusParaSalvo(UUID idCoupon);
+
+    void mudaStatusCouponParaNotSaved(UUID idCoupon);
 }
