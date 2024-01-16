@@ -51,4 +51,12 @@ public class CouponApplicationService implements CouponService{
         log.info("[finaliza]  CouponApplicationService - getCompanieCouponId");
         return new CouponDetailResponse(coupon);
     }
+
+    @Override
+    public void deleteCouponById(UUID idCoupon) {
+        log.info("[inicia]  CouponApplicationService - deleteCouponById");
+        Coupon coupon = couponRepository.getCouponById(idCoupon);
+        couponRepository.deleteCouponById(coupon);
+        log.info("[finaliza]  CouponApplicationService - deleteCouponById");
+    }
 }

@@ -51,4 +51,11 @@ public class CouponInfraRepository implements CouponRepository {
         log.info("[inicia] CouponInfraRepository - getCompanieCouponId");
         return couponCompanie;
     }
+
+    @Override
+    public void deleteCouponById(Coupon coupon) {
+        log.info("[inicia] CouponInfraRepository - deleteCouponById");
+        couponSpringDataJPARepository.delete(coupon);
+        log.info("[finaliza] CouponInfraRepository - deleteCouponById");
+    }
 }

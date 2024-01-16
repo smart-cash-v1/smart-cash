@@ -47,4 +47,12 @@ public class CouponController  implements CouponAPI{
         log.info("[finaliza] CouponController - getCompanieCouponId");
         return couponDetail;
     }
+
+    @Override
+    public void deleteCouponById(UUID idCoupon) {
+        log.info("[inicia] CouponController - deleteCouponById");
+        log.info("[idCoupon] {}", idCoupon);
+        couponService.deleteCouponById(idCoupon);
+        log.info("[finaliza] CouponController - deleteCouponById");
+    }
 }

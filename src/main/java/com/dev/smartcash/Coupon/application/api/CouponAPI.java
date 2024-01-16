@@ -37,4 +37,7 @@ public interface CouponAPI {
     @ResponseStatus(code = HttpStatus.OK)
     CouponDetailResponse getCompanieId(@PathVariable UUID idCompanie);
 
+    @DeleteMapping(value = "/coupon/{idCoupon}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deleteCouponById(@PathVariable UUID idCoupon);
 }

@@ -11,4 +11,5 @@ public interface CouponRepository {
     Coupon getCouponById(UUID idCoupon);
     List<Coupon> getAllCoupons();
     Coupon getCompanieId(UUID idCompanie);
+    void deleteCouponById(Coupon coupon);
 }
