@@ -32,6 +32,5 @@ public class CouponInfraRepository implements CouponRepository {
         Optional<Coupon> coupon = couponSpringDataJPARepository.findByIdCoupon(idCoupon);
         log.info("[finaliza] CouponInfraRepository - getCouponId");
         return coupon;
-
     }
 }
