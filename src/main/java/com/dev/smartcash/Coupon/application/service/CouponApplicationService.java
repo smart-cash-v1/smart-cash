@@ -59,9 +59,12 @@ public class CouponApplicationService implements CouponService{
     @Override
     public void deleteCouponById(UUID idCoupon) {
         log.info("[inicia]  CouponApplicationService - deleteCouponById");
-        Coupon coupon = couponRepository.getCouponById(idCoupon);
+        Coupon coupon = couponRepository.getCouponById(idCoupon)
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Coupon not found!"));
         couponRepository.deleteCouponById(coupon);
         log.info("[finaliza]  CouponApplicationService - deleteCouponById");
+
+    }
 
     public void mudaStatusParaSalvo(UUID idCoupon) {
         log.info("[inicia]  CouponApplicationService - mudaStatusParaSalvo ");
