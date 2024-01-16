@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.UUID;
 
 @Log4j2
@@ -31,4 +30,10 @@ public class CouponController  implements CouponAPI{
         return coupon;
     }
 
+    @Override
+    public void alterarStatusDoCupom(UUID idCoupon) {
+        log.info("[inicia] CouponController - alterarStatusDoCupom ");
+        couponService.mudaStatusParaSalvo(idCoupon);
+        log.info("[finaliza] CouponController - alterarStatusDoCupom ");
+    }
 }

@@ -9,7 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -27,10 +27,9 @@ public class CouponInfraRepository implements CouponRepository {
         return coupon;
     }
     @Override
-    public Coupon getCouponById(UUID idCoupon) {
+    public Optional<Coupon> getCouponById(UUID idCoupon) {
         log.info("[inicia] CouponInfraRepository - getCouponId");
-        Coupon coupon = (Coupon) couponSpringDataJPARepository.findByIdCoupon(idCoupon)
-                        .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Coupon not found!"));
+        Optional<Coupon> coupon = couponSpringDataJPARepository.findByIdCoupon(idCoupon);
         log.info("[finaliza] CouponInfraRepository - getCouponId");
         return coupon;
     }

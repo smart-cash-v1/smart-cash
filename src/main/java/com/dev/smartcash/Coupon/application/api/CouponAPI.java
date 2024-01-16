@@ -1,5 +1,6 @@
 package com.dev.smartcash.Coupon.application.api;
 
+import com.dev.smartcash.Coupon.domain.StatusFavorite;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -28,4 +29,9 @@ public interface CouponAPI {
     CouponListDTO getCouponById(@PathVariable UUID idCoupon);
 
 
+    @PatchMapping("/{idCoupon}/status")
+    @Operation(summary = "Mudar status do Cupom",
+            description = "Este endpoint muda o status de um cupom!")
+    @ResponseStatus(HttpStatus.OK)
+    void alterarStatusDoCupom(@PathVariable UUID idCoupon);
 }
