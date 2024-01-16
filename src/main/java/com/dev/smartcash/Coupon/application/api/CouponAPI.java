@@ -1,6 +1,5 @@
 package com.dev.smartcash.Coupon.application.api;
 
-import com.dev.smartcash.Coupon.domain.StatusFavorite;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -40,17 +39,22 @@ public interface CouponAPI {
     @ResponseStatus(code = HttpStatus.OK)
     CouponDetailResponse getCompanieId(@PathVariable UUID idCompanie);
 
-
     @DeleteMapping(value = "/coupon/{idCoupon}")
     @Operation(summary = "Endpoint para exclusão de um cupom passando o ID.",
             description = "Este endpoint exclui um cupom passando o idCoupon ")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deleteCouponById(@PathVariable UUID idCoupon);
 
-    @PatchMapping("/{idCoupon}/status")
-    @Operation(summary = "Mudar status do Cupom",
-            description = "Este endpoint muda o status de um cupom!")
+    @PatchMapping("/{idCoupon}/status/saved")
+    @Operation(summary = "Mudar status do Cupom para SAVED",
+            description = "Este endpoint muda o status de um cupom para SAVED!")
     @ResponseStatus(HttpStatus.OK)
     void alterarStatusDoCupom(@PathVariable UUID idCoupon);
+
+    @PatchMapping("/{idCoupon}/status/not_saved")
+    @Operation(summary = "Mudar status do Cupom para NOT_SAVED",
+            description = "Este endpoint muda o status de um cupom para NOT_SAVED!")
+    @ResponseStatus(HttpStatus.OK)
+    void alterarStatusParaNotSaved(@PathVariable UUID idCoupon);
 
 }
