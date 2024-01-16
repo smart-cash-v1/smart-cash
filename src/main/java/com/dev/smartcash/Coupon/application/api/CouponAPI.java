@@ -33,7 +33,6 @@ public interface CouponAPI {
     @ResponseStatus(code = HttpStatus.OK)
     List<CouponListDTO> getAllCoupons();
 
-
     @GetMapping(value = "/all-coupons/{idCompanie}")
     @Operation(summary = "Retorna uma Lista de Cupons de uma empresa",
             description = "Este endpoint retorna Todos os Cupons de uma empresa Cadastrados.")
@@ -51,8 +50,6 @@ public interface CouponAPI {
             description = "Este endpoint muda o status de um cupom para SAVED!")
     @ResponseStatus(HttpStatus.OK)
     void alterarStatusDoCupom(@PathVariable UUID idCoupon);
-<<<<<<< HEAD
-=======
 
     @PatchMapping("/{idCoupon}/status/not_saved")
     @Operation(summary = "Mudar status do Cupom para NOT_SAVED",
@@ -60,5 +57,4 @@ public interface CouponAPI {
     @ResponseStatus(HttpStatus.OK)
     void alterarStatusParaNotSaved(@PathVariable UUID idCoupon);
 
->>>>>>> 1b348f5ac56096e0a578f7318898d9d18fff894e
 }
