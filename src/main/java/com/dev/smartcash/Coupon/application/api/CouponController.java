@@ -3,6 +3,7 @@ package com.dev.smartcash.Coupon.application.api;
 import com.dev.smartcash.Coupon.application.service.CouponService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import java.util.List;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
@@ -31,9 +32,33 @@ public class CouponController  implements CouponAPI{
     }
 
     @Override
-    public void alterarStatusParaSaved(UUID idCoupon) {
+    public List<CouponListDTO> getAllCoupons() {
+        log.info("[inicia] CouponController - getAllCoupons");
+        List<CouponListDTO> coupons = couponService.getAllCoupons();
+        log.info("[finaliza] CouponController - getAllCoupons");
+        return coupons;
+    }
+
+    @Override
+    public CouponDetailResponse getCompanieId(UUID idCompanie) {
+        log.info("[inicia] CouponController - getCompanieCouponId");
+        log.info("[idCompanie]{}", idCompanie);
+        CouponDetailResponse couponDetail = couponService.getCompanieId(idCompanie);
+        log.info("[finaliza] CouponController - getCompanieCouponId");
+        return couponDetail;
+    }
+
+    @Override
+    public void deleteCouponById(UUID idCoupon) {
+        log.info("[inicia] CouponController - deleteCouponById");
+        log.info("[idCoupon] {}", idCoupon);
+        couponService.deleteCouponById(idCoupon);
+        log.info("[finaliza] CouponController - deleteCouponById");
+    }
+
+    public void alterarStatusDoCupom(UUID idCoupon) {
         log.info("[inicia] CouponController - alterarStatusDoCupom ");
-        couponService.mudaStatusDoCoupon(idCoupon);
+        couponService.mudaStatusParaSalvo(idCoupon);
         log.info("[finaliza] CouponController - alterarStatusDoCupom ");
     }
 

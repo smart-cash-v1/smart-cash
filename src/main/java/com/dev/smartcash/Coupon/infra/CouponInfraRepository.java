@@ -9,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -32,5 +33,29 @@ public class CouponInfraRepository implements CouponRepository {
         Optional<Coupon> coupon = couponSpringDataJPARepository.findByIdCoupon(idCoupon);
         log.info("[finaliza] CouponInfraRepository - getCouponId");
         return coupon;
+    }
+
+    @Override
+    public List<Coupon> getAllCoupons() {
+        log.info("[inicia] CouponInfraRepository - getAllCoupons");
+        List<Coupon> generalCoupon = couponSpringDataJPARepository.findAll();
+        log.info("[finaliza] CouponInfraRepository - getAllCoupons");
+        return generalCoupon;
+    }
+
+    @Override
+    public Coupon getCompanieId(UUID idCompanie) {
+        log.info("[inicia] CouponInfraRepository - getCompanieCouponId");
+        Coupon couponCompanie = couponSpringDataJPARepository.findByIdCompanie(idCompanie)
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Coupon not found!"));
+        log.info("[inicia] CouponInfraRepository - getCompanieCouponId");
+        return couponCompanie;
+    }
+
+    @Override
+    public void deleteCouponById(Coupon coupon) {
+        log.info("[inicia] CouponInfraRepository - deleteCouponById");
+        couponSpringDataJPARepository.delete(coupon);
+        log.info("[finaliza] CouponInfraRepository - deleteCouponById");
     }
 }
