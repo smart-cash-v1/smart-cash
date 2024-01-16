@@ -1,5 +1,6 @@
 package com.dev.smartcash.Coupon.application.service;
 
+import com.dev.smartcash.Coupon.application.api.CouponDetailResponse;
 import com.dev.smartcash.Coupon.application.api.CouponRequest;
 import com.dev.smartcash.Coupon.application.api.CouponResponse;
 import com.dev.smartcash.Coupon.application.api.CouponListDTO;
@@ -41,5 +42,13 @@ public class CouponApplicationService implements CouponService{
         List<Coupon> coupons = couponRepository.getAllCoupons();
         log.info("[finaliza]  CouponApplicationService - getAllCoupons");
         return CouponListDTO.converte(coupons);
+    }
+
+    @Override
+    public CouponDetailResponse getCompanieId(UUID idCompanie) {
+        log.info("[inicia]  CouponApplicationService - getCompanieCouponId");
+        Coupon coupon = couponRepository.getCompanieId(idCompanie);
+        log.info("[finaliza]  CouponApplicationService - getCompanieCouponId");
+        return new CouponDetailResponse(coupon);
     }
 }

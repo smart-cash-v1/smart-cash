@@ -10,4 +10,5 @@ public interface CouponRepository {
     Coupon save(Coupon coupon);
     Coupon getCouponById(UUID idCoupon);
     List<Coupon> getAllCoupons();
+    Coupon getCompanieId(UUID idCompanie);
 }
