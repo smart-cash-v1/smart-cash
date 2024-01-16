@@ -31,4 +31,9 @@ public class Coupon {
         this.name = couponRequest.getName();
         this.status = StatusFavorite.NOT_SAVED;
     }
+
+    public void setStatus(StatusFavorite saved) {
+        this.status = StatusFavorite.SAVED;
+
+    }
 }

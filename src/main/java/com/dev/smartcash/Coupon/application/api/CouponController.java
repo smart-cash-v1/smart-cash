@@ -29,4 +29,11 @@ public class CouponController  implements CouponAPI{
         log.info("[finish] CouponController - getCouponById");
         return coupon;
     }
+
+    @Override
+    public void alterarStatusDoCupom(UUID idCoupon) {
+        log.info("[inicia] CouponController - alterarStatusDoCupom ");
+        couponService.mudaStatusParaSalvo(idCoupon);
+        log.info("[finaliza] CouponController - alterarStatusDoCupom ");
+    }
 }

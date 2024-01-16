@@ -9,4 +9,5 @@ import java.util.UUID;
 public interface CouponService {
     CouponResponse newCoupon(CouponRequest couponRequest);
     CouponListDTO getCouponById(UUID idCoupon);
+    void mudaStatusParaSalvo(UUID idCoupon);
 }
