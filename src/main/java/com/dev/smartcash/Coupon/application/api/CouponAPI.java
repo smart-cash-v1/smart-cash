@@ -2,11 +2,11 @@ package com.dev.smartcash.Coupon.application.api;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -26,5 +26,15 @@ public interface CouponAPI {
             description = "Este endpoint retorna um cupom específico de, uma empresa específica!")
     @ResponseStatus(code = HttpStatus.OK)
     CouponListDTO getCouponById(@PathVariable UUID idCoupon);
+
+    @GetMapping
+    @Operation(summary = "Retorna uma Lista de Cupons!",
+            description = "Este endpoint retorna Todos os Cupons Cadastrados!")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<CouponListDTO> getAllCoupons();
+
+    @GetMapping(value = "/coupon/{idCompanie}")
+    @ResponseStatus(code = HttpStatus.OK)
+    CouponDetailResponse getCompanieId(@PathVariable UUID idCompanie);
 
 }
