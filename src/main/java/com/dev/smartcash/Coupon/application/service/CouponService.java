@@ -14,4 +14,5 @@ public interface CouponService {
     List<CouponListDTO> getAllCoupons();
     CouponDetailResponse getCompanieId(UUID idCompanie);
     void deleteCouponById(UUID idCoupon);
+    void mudaStatusParaSalvo(UUID idCoupon);
 }

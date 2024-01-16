@@ -1,5 +1,6 @@
 package com.dev.smartcash.Coupon.application.api;
 
+import com.dev.smartcash.Coupon.domain.StatusFavorite;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -39,9 +40,17 @@ public interface CouponAPI {
     @ResponseStatus(code = HttpStatus.OK)
     CouponDetailResponse getCompanieId(@PathVariable UUID idCompanie);
 
+
     @DeleteMapping(value = "/coupon/{idCoupon}")
     @Operation(summary = "Endpoint para exclusão de um cupom passando o ID.",
             description = "Este endpoint exclui um cupom passando o idCoupon ")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deleteCouponById(@PathVariable UUID idCoupon);
+
+    @PatchMapping("/{idCoupon}/status")
+    @Operation(summary = "Mudar status do Cupom",
+            description = "Este endpoint muda o status de um cupom!")
+    @ResponseStatus(HttpStatus.OK)
+    void alterarStatusDoCupom(@PathVariable UUID idCoupon);
+
 }
