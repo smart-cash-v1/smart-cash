@@ -38,4 +38,13 @@ public class CouponController  implements CouponAPI{
         log.info("[finaliza] CouponController - getAllCoupons");
         return coupons;
     }
+
+    @Override
+    public CouponDetailResponse getCompanieId(UUID idCompanie) {
+        log.info("[inicia] CouponController - getCompanieCouponId");
+        log.info("[idCompanie]{}", idCompanie);
+        CouponDetailResponse couponDetail = couponService.getCompanieId(idCompanie);
+        log.info("[finaliza] CouponController - getCompanieCouponId");
+        return couponDetail;
+    }
 }

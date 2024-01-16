@@ -2,7 +2,6 @@ package com.dev.smartcash.Coupon.application.api;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,5 +33,8 @@ public interface CouponAPI {
     @ResponseStatus(code = HttpStatus.OK)
     List<CouponListDTO> getAllCoupons();
 
+    @GetMapping(value = "/coupon/{idCompanie}")
+    @ResponseStatus(code = HttpStatus.OK)
+    CouponDetailResponse getCompanieId(@PathVariable UUID idCompanie);
 
 }
