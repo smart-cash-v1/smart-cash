@@ -39,12 +39,22 @@ public class CouponApplicationService implements CouponService{
     }
 
     @Override
-    public void mudaStatusParaSalvo(UUID idCoupon) {
+    public void mudaStatusDoCoupon(UUID idCoupon) {
         log.info("[inicia]  CouponApplicationService - mudaStatusParaSalvo ");
         Coupon coupon = couponRepository.getCouponById(idCoupon)
                 .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Coupon not found!"));
         coupon.setStatus(StatusFavorite.SAVED);
         couponRepository.save(coupon);
         log.info("[finaliza]  CouponApplicationService - mudaStatusParaSalvo ");
+    }
+
+    @Override
+    public void mudaStatusCouponParaNotSaved(UUID idCoupon) {
+        log.info("[inicia]  CouponApplicationService - mudaStatusCouponParaNotSaved");
+        Coupon coupon = couponRepository.getCouponById(idCoupon)
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Coupon not found!"));
+        coupon.setStatus(StatusFavorite.NOT_SAVED);
+        couponRepository.save(coupon);
+        log.info("[finaliza]  CouponApplicationService - mudaStatusCouponParaNotSaved");
     }
 }
