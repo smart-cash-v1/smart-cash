@@ -35,20 +35,4 @@ public class CouponApplicationService implements CouponService{
         log.info("[finaliza]  CouponApplicationService - getCouponById");
         return new CouponListDTO(coupon);
     }
-
-    @Override
-    public List<CouponListDTO> getAllCoupons() {
-        log.info("[inicia]  CouponApplicationService - getAllCoupons");
-        List<Coupon> coupons = couponRepository.getAllCoupons();
-        log.info("[finaliza]  CouponApplicationService - getAllCoupons");
-        return CouponListDTO.converte(coupons);
-    }
-
-    @Override
-    public CouponDetailResponse getCompanieId(UUID idCompanie) {
-        log.info("[inicia]  CouponApplicationService - getCompanieCouponId");
-        Coupon coupon = couponRepository.getCompanieId(idCompanie);
-        log.info("[finaliza]  CouponApplicationService - getCompanieCouponId");
-        return new CouponDetailResponse(coupon);
-    }
 }

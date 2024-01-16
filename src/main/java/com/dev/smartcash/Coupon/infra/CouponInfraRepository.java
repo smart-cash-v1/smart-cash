@@ -34,21 +34,4 @@ public class CouponInfraRepository implements CouponRepository {
         log.info("[finaliza] CouponInfraRepository - getCouponId");
         return coupon;
     }
-
-    @Override
-    public List<Coupon> getAllCoupons() {
-        log.info("[inicia] CouponInfraRepository - getAllCoupons");
-        List<Coupon> generalCoupon = couponSpringDataJPARepository.findAll();
-        log.info("[finaliza] CouponInfraRepository - getAllCoupons");
-        return generalCoupon;
-    }
-
-    @Override
-    public Coupon getCompanieId(UUID idCompanie) {
-        log.info("[inicia] CouponInfraRepository - getCompanieCouponId");
-        Coupon couponCompanie = couponSpringDataJPARepository.findByIdCompanie(idCompanie)
-                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Coupon not found!"));
-        log.info("[inicia] CouponInfraRepository - getCompanieCouponId");
-        return couponCompanie;
-    }
 }

@@ -27,14 +27,5 @@ public interface CouponAPI {
     @ResponseStatus(code = HttpStatus.OK)
     CouponListDTO getCouponById(@PathVariable UUID idCoupon);
 
-    @GetMapping
-    @Operation(summary = "Retorna uma Lista de Cupons!",
-            description = "Este endpoint retorna Todos os Cupons Cadastrados!")
-    @ResponseStatus(code = HttpStatus.OK)
-    List<CouponListDTO> getAllCoupons();
-
-    @GetMapping(value = "/coupon/{idCompanie}")
-    @ResponseStatus(code = HttpStatus.OK)
-    CouponDetailResponse getCompanieId(@PathVariable UUID idCompanie);
 
 }
