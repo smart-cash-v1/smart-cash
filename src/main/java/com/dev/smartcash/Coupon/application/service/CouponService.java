@@ -11,5 +11,8 @@ import java.util.UUID;
 public interface CouponService {
     CouponResponse newCoupon(CouponRequest couponRequest);
     CouponListDTO getCouponById(UUID idCoupon);
+    List<CouponListDTO> getAllCoupons();
+    CouponDetailResponse getCompanieId(UUID idCompanie);
+    void deleteCouponById(UUID idCoupon);
     void mudaStatusParaSalvo(UUID idCoupon);
 }

@@ -31,6 +31,30 @@ public class CouponController  implements CouponAPI{
     }
 
     @Override
+    public List<CouponListDTO> getAllCoupons() {
+        log.info("[inicia] CouponController - getAllCoupons");
+        List<CouponListDTO> coupons = couponService.getAllCoupons();
+        log.info("[finaliza] CouponController - getAllCoupons");
+        return coupons;
+    }
+
+    @Override
+    public CouponDetailResponse getCompanieId(UUID idCompanie) {
+        log.info("[inicia] CouponController - getCompanieCouponId");
+        log.info("[idCompanie]{}", idCompanie);
+        CouponDetailResponse couponDetail = couponService.getCompanieId(idCompanie);
+        log.info("[finaliza] CouponController - getCompanieCouponId");
+        return couponDetail;
+    }
+
+
+    @Override
+    public void deleteCouponById(UUID idCoupon) {
+        log.info("[inicia] CouponController - deleteCouponById");
+        log.info("[idCoupon] {}", idCoupon);
+        couponService.deleteCouponById(idCoupon);
+        log.info("[finaliza] CouponController - deleteCouponById");
+
     public void alterarStatusDoCupom(UUID idCoupon) {
         log.info("[inicia] CouponController - alterarStatusDoCupom ");
         couponService.mudaStatusParaSalvo(idCoupon);

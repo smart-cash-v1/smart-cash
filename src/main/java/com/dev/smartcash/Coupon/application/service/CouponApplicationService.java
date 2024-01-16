@@ -41,6 +41,28 @@ public class CouponApplicationService implements CouponService{
     }
 
     @Override
+    public List<CouponListDTO> getAllCoupons() {
+        log.info("[inicia]  CouponApplicationService - getAllCoupons");
+        List<Coupon> coupons = couponRepository.getAllCoupons();
+        log.info("[finaliza]  CouponApplicationService - getAllCoupons");
+        return CouponListDTO.converte(coupons);
+    }
+
+    @Override
+    public CouponDetailResponse getCompanieId(UUID idCompanie) {
+        log.info("[inicia]  CouponApplicationService - getCompanieCouponId");
+        Coupon coupon = couponRepository.getCompanieId(idCompanie);
+        log.info("[finaliza]  CouponApplicationService - getCompanieCouponId");
+        return new CouponDetailResponse(coupon);
+    }
+
+    @Override
+    public void deleteCouponById(UUID idCoupon) {
+        log.info("[inicia]  CouponApplicationService - deleteCouponById");
+        Coupon coupon = couponRepository.getCouponById(idCoupon);
+        couponRepository.deleteCouponById(coupon);
+        log.info("[finaliza]  CouponApplicationService - deleteCouponById");
+
     public void mudaStatusParaSalvo(UUID idCoupon) {
         log.info("[inicia]  CouponApplicationService - mudaStatusParaSalvo ");
         Coupon coupon = couponRepository.getCouponById(idCoupon)
@@ -48,5 +70,6 @@ public class CouponApplicationService implements CouponService{
         coupon.setStatus(StatusFavorite.SAVED);
         couponRepository.save(coupon);
         log.info("[finaliza]  CouponApplicationService - mudaStatusParaSalvo ");
+
     }
 }
