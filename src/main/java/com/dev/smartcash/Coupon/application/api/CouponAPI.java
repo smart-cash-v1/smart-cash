@@ -2,6 +2,8 @@ package com.dev.smartcash.Coupon.application.api;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,5 +58,11 @@ public interface CouponAPI {
             description = "Este endpoint muda o status de um cupom para NOT_SAVED!")
     @ResponseStatus(HttpStatus.OK)
     void alterarStatusParaNotSaved(@PathVariable UUID idCoupon);
+
+    @GetMapping("/all-coupon-paginated")
+    @Operation(summary = "Retorna todas os cupom cadastrados paginadas",
+            description = "Este endpoint recupera uma lista de todos as cupons cadastradas no sistema com paginação.")
+    @ResponseStatus(code = HttpStatus.OK)
+    Page<CouponListDTO> getTodasCompaniePaginado(Pageable pageable);
 
 }

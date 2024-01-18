@@ -4,6 +4,8 @@ import com.dev.smartcash.Coupon.application.api.CouponDetailResponse;
 import com.dev.smartcash.Coupon.application.api.CouponRequest;
 import com.dev.smartcash.Coupon.application.api.CouponResponse;
 import com.dev.smartcash.Coupon.application.api.CouponListDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,4 +19,5 @@ public interface CouponService {
     void mudaStatusParaSalvo(UUID idCoupon);
 
     void mudaStatusCouponParaNotSaved(UUID idCoupon);
+    Page<CouponListDTO> buscaTodosCouponPaginado(Pageable pageable);
 }

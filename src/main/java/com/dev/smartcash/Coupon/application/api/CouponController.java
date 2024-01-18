@@ -4,6 +4,9 @@ import com.dev.smartcash.Coupon.application.service.CouponService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
@@ -67,5 +70,13 @@ public class CouponController  implements CouponAPI{
         log.info("[inicia] CouponController - alterarStatusParaNotSaved");
         couponService.mudaStatusCouponParaNotSaved(idCoupon);
         log.info("[finaliza] CouponController - alterarStatusParaNotSaved");
+    }
+
+    @Override
+    public Page<CouponListDTO> getTodasCompaniePaginado(Pageable pageable) {
+        log.info("[inicia] CouponController - getTodasCompaniePaginado ");
+        Page<CouponListDTO> todosCoupons =couponService.buscaTodosCouponPaginado(pageable);
+        log.info("[finaliza] CouponController - getTodasCompaniePaginado ");
+        return todosCoupons;
     }
 }

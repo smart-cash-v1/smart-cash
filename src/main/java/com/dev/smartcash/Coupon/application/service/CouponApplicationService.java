@@ -10,6 +10,8 @@ import com.dev.smartcash.Coupon.domain.StatusFavorite;
 import com.dev.smartcash.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -84,5 +86,13 @@ public class CouponApplicationService implements CouponService{
         coupon.setStatus(StatusFavorite.NOT_SAVED);
         couponRepository.save(coupon);
         log.info("[finaliza]  CouponApplicationService - mudaStatusCouponParaNotSaved");
+    }
+
+    @Override
+    public Page<CouponListDTO> buscaTodosCouponPaginado(Pageable pageable) {
+        log.info("[inicia] CouponApplicationService - buscaTodosCouponPaginado");
+        Page<Coupon> coupons = couponRepository.buscaTodosCouponsPaginado(pageable);
+        log.info("[finaliza] CouponApplicationService - buscaTodosCouponPaginado");
+        return coupons.map(CouponListDTO::new);
     }
 }

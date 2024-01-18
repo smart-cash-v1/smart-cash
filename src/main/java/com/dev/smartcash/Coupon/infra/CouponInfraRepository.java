@@ -6,6 +6,8 @@ import com.dev.smartcash.Coupon.application.repository.CouponRepository;
 import com.dev.smartcash.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
@@ -57,5 +59,13 @@ public class CouponInfraRepository implements CouponRepository {
         log.info("[inicia] CouponInfraRepository - deleteCouponById");
         couponSpringDataJPARepository.delete(coupon);
         log.info("[finaliza] CouponInfraRepository - deleteCouponById");
+    }
+
+    @Override
+    public Page<Coupon> buscaTodosCouponsPaginado(Pageable pageable) {
+        log.info("[inicia] CouponInfraRepository - buscaTodosCouponsPaginado");
+        Page<Coupon> todosCoupons = couponSpringDataJPARepository.findAll(pageable);
+        log.info("[finaliza] CouponInfraRepository - buscaTodosCouponsPaginado");
+        return todosCoupons;
     }
 }
