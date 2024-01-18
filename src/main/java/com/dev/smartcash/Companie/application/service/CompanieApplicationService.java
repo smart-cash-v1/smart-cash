@@ -67,8 +67,7 @@ public class CompanieApplicationService implements CompanieService {
     }
     @Override
     public Page<CompanieListResponse> buscaTodasCompaniePaginada(Pageable pageable) {
-        log.info("[inicia] CompanieApplicationService - buscaTodasCompaniePaginada - Tamanho da Página: {}",
-                pageable.getPageSize());
+        log.info("[inicia] CompanieApplicationService - buscaTodasCompaniePaginada ");
         Page<Companie> companies = companieRepository.buscaTodasCompaniePaginada(pageable);
         log.info("[finaliza] CompanieApplicationService - buscaTodasCompaniePaginada");
         return companies.map(CompanieListResponse::new);
