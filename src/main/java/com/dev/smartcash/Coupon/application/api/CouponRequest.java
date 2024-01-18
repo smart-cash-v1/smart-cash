@@ -15,4 +15,5 @@ public class CouponRequest {
     private UUID idCompanie;
     @NotBlank
     private String name;
+    private String descricaoCoupon;
 }

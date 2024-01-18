@@ -23,12 +23,14 @@ public class Coupon {
     private UUID idCompanie;
     @NotBlank
     private String name;
+    private String descricaoCoupon;
     @Enumerated(EnumType.STRING)
     private StatusFavorite status;
 
     public Coupon(CouponRequest couponRequest) {
         this.idCompanie = couponRequest.getIdCompanie();
         this.name = couponRequest.getName();
+        this.descricaoCoupon = couponRequest.getDescricaoCoupon();
         this.status = StatusFavorite.NOT_SAVED;
     }
 
