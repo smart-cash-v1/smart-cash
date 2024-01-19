@@ -13,12 +13,14 @@ public class CouponListDTO {
     private UUID idCoupon;
     private UUID idCompanie;
     private String name;
+    private String descricaoCoupon;
     private StatusFavorite status;
 
     public CouponListDTO(Coupon coupon) {
         this.idCoupon = coupon.getIdCoupon();
         this.idCompanie = coupon.getIdCompanie();
         this.name = coupon.getName();
+        this.descricaoCoupon = coupon.getDescricaoCoupon();
         this.status = coupon.getStatus();
     }
 
