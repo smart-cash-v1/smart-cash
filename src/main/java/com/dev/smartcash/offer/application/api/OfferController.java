@@ -1,5 +1,6 @@
-package com.dev.smartcash.offer;
+package com.dev.smartcash.offer.application.api;
 
+import com.dev.smartcash.offer.application.service.OfferService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;

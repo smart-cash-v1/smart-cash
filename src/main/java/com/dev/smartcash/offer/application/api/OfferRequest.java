@@ -1,4 +1,4 @@
-package com.dev.smartcash.offer;
+package com.dev.smartcash.offer.application.api;
 
 import lombok.Getter;
 import lombok.ToString;

@@ -1,5 +1,6 @@
-package com.dev.smartcash.offer;
+package com.dev.smartcash.offer.domain;
 
+import com.dev.smartcash.offer.application.api.OfferRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

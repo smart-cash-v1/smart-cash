@@ -1,10 +1,12 @@
-package com.dev.smartcash.offer;
+package com.dev.smartcash.offer.application.service;
 
+import com.dev.smartcash.offer.application.api.OfferRequest;
+import com.dev.smartcash.offer.application.api.OfferResponse;
+import com.dev.smartcash.offer.application.repository.OfferRepository;
+import com.dev.smartcash.offer.domain.Offer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
-
-import java.math.BigInteger;
 
 @Service
 @Log4j2

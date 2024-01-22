@@ -1,4 +1,4 @@
-package com.dev.smartcash.offer;
+package com.dev.smartcash.offer.application.api;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

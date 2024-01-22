@@ -1,5 +1,6 @@
-package com.dev.smartcash.offer;
+package com.dev.smartcash.offer.infra;
 
+import com.dev.smartcash.offer.domain.Offer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
