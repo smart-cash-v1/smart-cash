@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/offer")
@@ -17,5 +18,12 @@ public interface OfferAPI {
             description = "Este endpoint cria Ofertas")
     @ResponseStatus(code = HttpStatus.CREATED)
     OfferResponse createdOffer(@RequestBody @Valid OfferRequest offerRequest);
+
+    @GetMapping(value = "/{idOffer}")
+    @Operation(summary = "Detalha Oferta por ID da Oferta",
+            description = "Este endpoint Detalha uma determinada Oferta.")
+    @ResponseStatus(code = HttpStatus.OK)
+    OfferListDTO getOfferById(@PathVariable UUID idOffer);
+
 
 }
