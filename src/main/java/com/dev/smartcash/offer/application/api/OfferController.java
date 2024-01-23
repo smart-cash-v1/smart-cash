@@ -56,5 +56,19 @@ public class OfferController implements OfferAPI{
         log.info("[finish] OfferController - deleteOfferById");
     }
 
+    @Override
+    public void changeOfferStatus(UUID idOffer) {
+        log.info("[start] OfferController - changeOfferStatus");
+        offerService.changeStatusToSaved(idOffer);
+        log.info("[finish] OfferController - changeOfferStatus");
+    }
+
+    @Override
+    public void changeOfferStatusNotSaved(UUID idOffer) {
+        log.info("[start] OfferController - changeOfferStatusNotSaved");
+        offerService.changeStatusToNotSaved(idOffer);
+        log.info("[finish] OfferController - changeOfferStatusNotSaved");
+    }
+
 
 }
