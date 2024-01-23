@@ -59,4 +59,12 @@ public class OfferApplicationService implements OfferService{
         offerRepository.save(offer);
         log.info("[finish] OfferApplicationService - upDateOffer");
     }
+
+    @Override
+    public void deleteOffer(UUID idOffer) {
+        log.info("[start] OfferApplicationService - deleteOffer");
+        Offer offer = offerRepository.getOfferById(idOffer);
+        offerRepository.deleteOffer(offer);
+        log.info("[finish] OfferApplicationService - deleteOffer");
+    }
 }

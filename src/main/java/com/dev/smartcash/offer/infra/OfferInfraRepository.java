@@ -44,4 +44,11 @@ public class OfferInfraRepository implements OfferRepository {
         log.info("[finish] OfferInfraRepository - getGeneralOffer");
         return generalOffer;
     }
+
+    @Override
+    public void deleteOffer(Offer offer) {
+        log.info("[start] OfferInfraRepository - deleteOffer");
+        offerSpringDataJPARepository.delete(offer);
+        log.info("[finish] OfferInfraRepository - deleteOffer");
+    }
 }

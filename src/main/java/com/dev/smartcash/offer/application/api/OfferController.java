@@ -47,4 +47,14 @@ public class OfferController implements OfferAPI{
         offerService.upDateOffer(idOffer, offerUpDateRequest);
         log.info("[finish] OfferController - updateOffersById");
     }
+
+    @Override
+    public void deleteOfferById(UUID idOffer) {
+        log.info("[start] OfferController - deleteOfferById");
+        log.info("[idOffer] {}", idOffer);
+        offerService.deleteOffer(idOffer);
+        log.info("[finish] OfferController - deleteOfferById");
+    }
+
+
 }

@@ -39,4 +39,11 @@ public interface OfferAPI {
     @ResponseStatus(code = HttpStatus.OK)
     void upDateOffersById(@PathVariable UUID idOffer, @Valid @RequestBody OfferUpDateRequest offerUpDateRequest);
 
+    @DeleteMapping(value = "/{idOffer}")
+    @Operation(summary = "Deleta Ofertas",
+            description = "Este endpoint Deleta as Oferta, pelo ID.")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deleteOfferById(@PathVariable UUID idOffer);
+
+
 }

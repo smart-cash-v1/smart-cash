@@ -14,4 +14,5 @@ public interface OfferService {
     OfferListDTO getOfferById(UUID idOffer);
     Page<OfferListDTO> getGeneralOffer(Pageable pageable);
     void upDateOffer(UUID idOffer, OfferUpDateRequest offerUpDateRequest);
+    void deleteOffer(UUID idOffer);
 }
