@@ -1,11 +1,13 @@
 package com.dev.smartcash.offer.infra;
 
+import com.dev.smartcash.handler.APIException;
 import com.dev.smartcash.offer.application.repository.OfferRepository;
 import com.dev.smartcash.offer.domain.Offer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -27,9 +29,10 @@ public class OfferInfraRepository implements OfferRepository {
     }
 
     @Override
-    public Optional<Object> getOfferById(UUID idOffer) {
+    public Offer getOfferById(UUID idOffer) {
         log.info("[start] OfferInfraRepository - getOfferById");
-        Optional<Object> offer = offerSpringDataJPARepository.findByIdOffer(idOffer);
+        Offer offer = offerSpringDataJPARepository.findById(idOffer)
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Offer not found"));
         log.info("[finish] OfferInfraRepository - getOfferById");
         return offer;
     }

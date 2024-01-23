@@ -32,4 +32,11 @@ public interface OfferAPI {
             description = "Este endpoint recupera uma lista de todas as Ofertas cadastradas no Sistema.")
     @ResponseStatus(code = HttpStatus.OK)
     Page<OfferListDTO> getGeneralOffer(Pageable pageable);
+
+    @PutMapping(value = "/{idOffer}")
+    @Operation(summary = "Atualiza/Edita Ofertas",
+            description = "Este endpoint Atualiza/Edita os campos da Oferta Criada, pelo ID.")
+    @ResponseStatus(code = HttpStatus.OK)
+    void upDateOffersById(@PathVariable UUID idOffer, @Valid @RequestBody OfferUpDateRequest offerUpDateRequest);
+
 }

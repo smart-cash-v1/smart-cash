@@ -7,5 +7,4 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface OfferSpringDataJPARepository extends JpaRepository<Offer, UUID> {
-    Optional<Object> findByIdOffer(UUID idOffer);
 }

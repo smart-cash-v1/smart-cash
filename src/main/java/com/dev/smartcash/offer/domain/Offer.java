@@ -1,6 +1,7 @@
 package com.dev.smartcash.offer.domain;
 
 import com.dev.smartcash.offer.application.api.OfferRequest;
+import com.dev.smartcash.offer.application.api.OfferUpDateRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,5 +37,12 @@ public class Offer {
         this.price = offerRequest.getPrice();
         this.linkUrl = offerRequest.getLinkUrl();
         this.imageUrl = offerRequest.getImageUrl();
+    }
+
+    public void upDate(OfferUpDateRequest offerUpDateRequest) {
+        this.name = offerUpDateRequest.getName();
+        this.price = offerUpDateRequest.getPrice();
+        this.linkUrl = offerUpDateRequest.getLinkUrl();
+        this.imageUrl = offerUpDateRequest.getImageUrl();
     }
 }

@@ -39,4 +39,12 @@ public class OfferController implements OfferAPI{
         log.info("[finish] OfferController - getGeneralOffer");
         return generalOffer;
     }
+
+    @Override
+    public void upDateOffersById(UUID idOffer, OfferUpDateRequest offerUpDateRequest) {
+        log.info("[start] OfferController - updateOffersById");
+        log.info("[idOffer] {}", idOffer);
+        offerService.upDateOffer(idOffer, offerUpDateRequest);
+        log.info("[finish] OfferController - updateOffersById");
+    }
 }
