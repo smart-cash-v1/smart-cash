@@ -7,6 +7,7 @@ import com.dev.smartcash.offer.application.api.OfferResponse;
 import com.dev.smartcash.offer.application.api.OfferUpDateRequest;
 import com.dev.smartcash.offer.application.repository.OfferRepository;
 import com.dev.smartcash.offer.domain.Offer;
+import com.dev.smartcash.offer.domain.StatusOffer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
@@ -58,5 +59,31 @@ public class OfferApplicationService implements OfferService{
         offer.upDate(offerUpDateRequest);
         offerRepository.save(offer);
         log.info("[finish] OfferApplicationService - upDateOffer");
+    }
+
+    @Override
+    public void deleteOffer(UUID idOffer) {
+        log.info("[start] OfferApplicationService - deleteOffer");
+        Offer offer = offerRepository.getOfferById(idOffer);
+        offerRepository.deleteOffer(offer);
+        log.info("[finish] OfferApplicationService - deleteOffer");
+    }
+
+    @Override
+    public void changeStatusToSaved(UUID idOffer) {
+        log.info("[start] OfferApplicationService - changeStatusToSaved");
+        Offer offer = offerRepository.getOfferById(idOffer);
+        offer.setStatus(StatusOffer.SAVED);
+        offerRepository.save(offer);
+        log.info("[finish] OfferApplicationService - changeStatusToSaved");
+    }
+
+    @Override
+    public void changeStatusToNotSaved(UUID idOffer) {
+        log.info("[start] OfferApplicationService - changeStatusToNotSaved");
+        Offer offer = offerRepository.getOfferById(idOffer);
+        offer.setStatus(StatusOffer.NOT_SAVED);
+        offerRepository.save(offer);
+        log.info("[finish] OfferApplicationService - changeStatusToNotSaved");
     }
 }

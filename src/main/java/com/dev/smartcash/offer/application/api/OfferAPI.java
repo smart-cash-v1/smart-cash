@@ -39,4 +39,22 @@ public interface OfferAPI {
     @ResponseStatus(code = HttpStatus.OK)
     void upDateOffersById(@PathVariable UUID idOffer, @Valid @RequestBody OfferUpDateRequest offerUpDateRequest);
 
+    @DeleteMapping(value = "/{idOffer}")
+    @Operation(summary = "Deleta Ofertas",
+            description = "Este endpoint Deleta as Oferta, pelo ID.")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deleteOfferById(@PathVariable UUID idOffer);
+
+    @PatchMapping(value = "/{idOffer}/status/saved")
+    @Operation(summary = "Muda Status",
+            description = "Este endpoint muda o status da Oferta para SAVED!")
+    @ResponseStatus(code = HttpStatus.OK)
+    void changeOfferStatus(@PathVariable UUID idOffer);
+
+    @PatchMapping(value = "/{idOffer}/status/not_saved")
+    @Operation(summary = "Muda Status",
+            description = "Este endpoint muda o status da Oferta para NOT_SAVED!")
+    @ResponseStatus(code = HttpStatus.OK)
+    void changeOfferStatusNotSaved(@PathVariable UUID idOffer);
+
 }

@@ -10,4 +10,5 @@ public interface OfferRepository {
     Offer save(Offer offer);
     Offer getOfferById(UUID idOffer);
     Page<Offer> getGeneralOffer(Pageable pageable);
+    void deleteOffer(Offer offer);
 }

@@ -6,10 +6,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -31,12 +28,15 @@ public class Offer {
     private String linkUrl;
     @NotBlank
     private String imageUrl;
+    @Enumerated(EnumType.STRING)
+    private  StatusOffer status;
 
     public Offer(OfferRequest offerRequest) {
         this.name = offerRequest.getName();
         this.price = offerRequest.getPrice();
         this.linkUrl = offerRequest.getLinkUrl();
         this.imageUrl = offerRequest.getImageUrl();
+        this.status = StatusOffer.NOT_SAVED;
     }
 
     public void upDate(OfferUpDateRequest offerUpDateRequest) {
@@ -44,5 +44,10 @@ public class Offer {
         this.price = offerUpDateRequest.getPrice();
         this.linkUrl = offerUpDateRequest.getLinkUrl();
         this.imageUrl = offerUpDateRequest.getImageUrl();
+        this.status = StatusOffer.NOT_SAVED;
+    }
+
+    public void setStatus(StatusOffer newStatus) {
+        this.status = newStatus;
     }
 }
