@@ -3,6 +3,8 @@ package com.dev.smartcash.offer.application.api;
 import com.dev.smartcash.offer.application.service.OfferService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
@@ -28,5 +30,13 @@ public class OfferController implements OfferAPI{
         OfferListDTO offer = offerService.getOfferById(idOffer);
         log.info("[finish] OfferController - getOfferById");
         return offer;
+    }
+
+    @Override
+    public Page<OfferListDTO> getGeneralOffer(Pageable pageable) {
+        log.info("[start] OfferController - getGeneralOffer");
+        Page<OfferListDTO> generalOffer = offerService.getGeneralOffer(pageable);
+        log.info("[finish] OfferController - getGeneralOffer");
+        return generalOffer;
     }
 }

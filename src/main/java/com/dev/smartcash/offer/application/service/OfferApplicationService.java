@@ -8,6 +8,8 @@ import com.dev.smartcash.offer.application.repository.OfferRepository;
 import com.dev.smartcash.offer.domain.Offer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +40,13 @@ public class OfferApplicationService implements OfferService{
                         .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Offer not found"));
         log.info("[finish] OfferApplicationService - getOfferById");
         return new OfferListDTO(offer);
+    }
+
+    @Override
+    public Page<OfferListDTO> getGeneralOffer(Pageable pageable) {
+        log.info("[start] OfferApplicationService -  getGeneralOffer");
+        Page<Offer> offers = offerRepository.getGeneralOffer(pageable);
+        log.info("[finish] OfferApplicationService -  getGeneralOffer");
+        return offers.map(OfferListDTO::new);
     }
 }

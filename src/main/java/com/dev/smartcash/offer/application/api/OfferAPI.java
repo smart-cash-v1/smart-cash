@@ -2,6 +2,8 @@ package com.dev.smartcash.offer.application.api;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,5 +27,9 @@ public interface OfferAPI {
     @ResponseStatus(code = HttpStatus.OK)
     OfferListDTO getOfferById(@PathVariable UUID idOffer);
 
-
+    @GetMapping
+    @Operation(summary = "Retorna todas as Ofertas cadastradas paginadas",
+            description = "Este endpoint recupera uma lista de todas as Ofertas cadastradas no Sistema.")
+    @ResponseStatus(code = HttpStatus.OK)
+    Page<OfferListDTO> getGeneralOffer(Pageable pageable);
 }
