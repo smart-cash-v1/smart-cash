@@ -20,6 +20,7 @@ public interface CompanieApi {
             description = "Este endpoint cadastra uma nova empresa.")
     @ResponseStatus(HttpStatus.CREATED)
     CompanieResponse cadastraCompanie(@RequestBody CompanieRequest companieRequeste);
+
     @GetMapping("/all-companies")
     @Operation(summary = "Retorna todas as empresas cadastradas",
             description = "Este endpoint recupera uma lista de todas as empresas cadastradas no sistema.")
