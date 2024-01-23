@@ -7,7 +7,7 @@ spring:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=smartcash
     username: postgres
-    password: 1998
+    password: 2512
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       poolName: SpringBootJPAHikariCP
