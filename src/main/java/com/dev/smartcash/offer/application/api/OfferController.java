@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -69,6 +70,13 @@ public class OfferController implements OfferAPI{
         offerService.changeStatusToNotSaved(idOffer);
         log.info("[finish] OfferController - changeOfferStatusNotSaved");
     }
-
+//
+    @Override
+    public List<OfferListReport> report() {
+        log.info("[start] OfferController -  report");
+        List<OfferListReport> listReports = offerService.generateReport();
+        log.info("[finish] OfferController -  report");
+        return listReports;
+    }
 
 }

@@ -1,10 +1,7 @@
 package com.dev.smartcash.offer.application.service;
 
 import com.dev.smartcash.handler.APIException;
-import com.dev.smartcash.offer.application.api.OfferListDTO;
-import com.dev.smartcash.offer.application.api.OfferRequest;
-import com.dev.smartcash.offer.application.api.OfferResponse;
-import com.dev.smartcash.offer.application.api.OfferUpDateRequest;
+import com.dev.smartcash.offer.application.api.*;
 import com.dev.smartcash.offer.application.repository.OfferRepository;
 import com.dev.smartcash.offer.domain.Offer;
 import com.dev.smartcash.offer.domain.StatusOffer;
@@ -15,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -85,5 +83,13 @@ public class OfferApplicationService implements OfferService{
         offer.setStatus(StatusOffer.NOT_SAVED);
         offerRepository.save(offer);
         log.info("[finish] OfferApplicationService - changeStatusToNotSaved");
+    }
+//
+    @Override
+    public List<OfferListReport> generateReport() {
+        log.info("[start] OfferApplicationService - generateReport");
+        List<Offer> report = offerRepository.generateReport();
+        log.info("[finish] OfferApplicationService - generateReport");
+        return OfferListReport.converte(report);
     }
 }

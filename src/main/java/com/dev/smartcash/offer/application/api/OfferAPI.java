@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -56,5 +57,13 @@ public interface OfferAPI {
             description = "Este endpoint muda o status da Oferta para NOT_SAVED!")
     @ResponseStatus(code = HttpStatus.OK)
     void changeOfferStatusNotSaved(@PathVariable UUID idOffer);
+
+    //Query para buscar os todos os produtos pelo menor preço!!
+
+    @GetMapping("/report")
+    @Operation(summary = "Relatório",
+            description = "Este endpoint busca todos os produtos, de mercados diversos coloca em Ordem de preço Crescente!!")
+    @ResponseStatus(code = HttpStatus.FOUND)
+    List<OfferListReport> report();
 
 }

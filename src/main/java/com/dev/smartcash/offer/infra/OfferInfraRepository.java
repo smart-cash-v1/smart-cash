@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -50,5 +51,13 @@ public class OfferInfraRepository implements OfferRepository {
         log.info("[start] OfferInfraRepository - deleteOffer");
         offerSpringDataJPARepository.delete(offer);
         log.info("[finish] OfferInfraRepository - deleteOffer");
+    }
+//
+    @Override
+    public List<Offer> generateReport() {
+        log.info("[start] OfferInfraRepository - generateReport");
+        List<Offer> generalReport = offerSpringDataJPARepository.findAllReport();
+        log.info("[finish] OfferInfraRepository - generateReport");
+        return generalReport.subList(0,Math.min(5, generalReport.size()));
     }
 }

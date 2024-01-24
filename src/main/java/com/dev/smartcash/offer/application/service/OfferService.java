@@ -1,12 +1,10 @@
 package com.dev.smartcash.offer.application.service;
 
-import com.dev.smartcash.offer.application.api.OfferListDTO;
-import com.dev.smartcash.offer.application.api.OfferRequest;
-import com.dev.smartcash.offer.application.api.OfferResponse;
-import com.dev.smartcash.offer.application.api.OfferUpDateRequest;
+import com.dev.smartcash.offer.application.api.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface OfferService {
@@ -17,4 +15,6 @@ public interface OfferService {
     void deleteOffer(UUID idOffer);
     void changeStatusToSaved(UUID idOffer);
     void changeStatusToNotSaved(UUID idOffer);
+//
+    List<OfferListReport> generateReport();
 }
